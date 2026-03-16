@@ -8,11 +8,11 @@ const input2 = document.getElementById('palavras');
 const chanses = document.getElementById('tentativas');
 const pontos = document.getElementById('pontos');
 const ErroLetras = document.getElementById('letras');
-const perdedor = document.getElementById('perdedor');
-const vensedor = document.getElementById('vensedor');
 
 let todasASletras = [];
 let total = 0;
+let Doispontos = 2;
+let menosUMponto = 1;
 let erros = 0;
 let limite = 6;
 let palavraSecreta = "";
@@ -40,10 +40,10 @@ botaoIniciar.addEventListener('click', function (event) {
 Umpalavras.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const letra = input2.value.toLowerCase().trim();
+    const letra = input2.value.toLowerCase();
     input2.value = ""
 
-    if (!letra || todasASletras.includes(letra)) return;
+    if (!letra) return;
 
     const spans = APalavra.querySelectorAll('span');
     let acertos = false;
@@ -53,45 +53,42 @@ Umpalavras.addEventListener('submit', function (event) {
     for (let contador = 0; contador < palavraSecreta.length; contador++) {
         if (palavraSecreta[contador] === letra) {
 
-            spans[contador].textContent = " " + letra.toUpperCase();
+            spans[contador].textContent = letra.toUpperCase();
             acertos = true;
+        }
+    }
+    if (!acertos) {
+        erros++;
+        total = menosUMponto - total;
 
-
-
+        if (!todasASletras.includes(letra)) {
+            todasASletras.push(letra);
         }
     }
 
-
-    if (!acertos) {
-        erros++;
-        total =  Math.max(0, total - 1);
-    }else {
-        total += 2;
-    }    
-
-    ErroLetras.textContent = todasASletras.join(", ").toUpperCase(); {
-        chanses.textContent = limite - erros;
-        pontos.textContent = total;
-    }
+    ErroLetras.textContent = todasASletras.join(", ").toUpperCase();
+    chanses.textContent = limite - erros;
 
     if (erros >= limite) {
-    VaBase.style.display = 'none';
-    perdedor.style.display = 'flex';
-    setTimeout(() =>
-        location.reload(),
-         4000);
+        alert("A palavra era: " + palavraSecreta);
+        location.reload();
         return;
     }
+    else {
+        total = total + Doispontos;
+    }
+
+    if (total < 0) total = 0;
+    pontos.textContent = total;
 
 
     const ganhou = Array.from(spans).some(virificar => virificar.textContent.includes("_"));
 
-    if (ganhou && palavraSecreta !== "") {
-        VaBase.style.display = 'none';
-        vensedor.style.display = 'flex';
+    if (!ganhou) {
         setTimeout(() => {
+            alert("Parabéns! Você venceu!");
             location.reload();
-        }, 4000);
+        }, 100);
     }
 });
 
