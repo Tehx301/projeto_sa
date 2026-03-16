@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>projeto sa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section id="plavra-secreta" class="segredo">
+        <label for="segredo" class="palavras-ocultas">
+            -=- digite uma palavra -=-
+        </label>
+        <br><br>
+        <input type="password" id="segredos" placeholder="digita ae">
+        <marquee behavior="" direction=""></marquee>
+        <button id="umBotao">iniciar</button>
+    </section>
+
+    <section class="base">
+        <h1>JOGO DA PALAVRA</h1>
+        <form id="Umpalavras">
+            <div class="palavra-oculta"><span> _</span><span> _</span><span> _</span><span> _</span><span> _</span>
+            </div>
+            <br>
+            <input type="text" id="palavras" placeholder="digita ae">
+
+            <button type="submit" id="otroBotao">enviar</button>
+            <marquee behavior="" direction=""></marquee>
+            <div class="informacao">
+                <h3> tentativas restantes: <span id="tentativas">6</span></h3>
+                <br>
+                <h3> pontuação: <span id="pontos"> 0 </span></h3>
+                <br>
+                <h3>letras erradas: <span id="letras"> </span></h3>
+            </div>
+        </form>
+    </section>
+
+    <section id="perdedor" style="display: none;">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
+        </style>
+        <ul class="finalruim">game over</ul>
+    </section>
+
+    <section id="vensedor" style="display: none;">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Moo+Lah+Lah&display=swap');
+        </style>
+        <p class="finalbom">você vencel</p>
+    </section>
+
+    <script src="codigo.js"></script>
+
+</body>
+
+</html>
