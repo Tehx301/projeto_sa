@@ -129,44 +129,37 @@ input:focus{
     border-color:   rgb(202, 202, 53);
 }
 
-#perdedor{
+.perdedor{
     display: none; 
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: red;
-    color: white;
+    background: black;
+    color: aqua;
     padding: 20px;
     font-size: 2rem;
     border-radius: 10px;
     z-index: 1000;
     font-size: 150px;
-    background: black; 
-    color: aqua;
+    font-family:
+    'Rubik Vinyl', cursive;
+    font-size: 80px; 
 }
 
-#vensedor{
+.vensedor{
     display: none; 
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    background: red;
-    color: white;
+    transform:translate(-50%, -50%);
+    background:black;
+    color:rgb(138, 44, 44);
     padding: 20px;
     font-size: 2rem;
     border-radius: 10px;
     z-index: 1000;
     font-size: 100px;
-    background: black; 
-    color: rgb(138, 44, 44);
+    font-family: 'Moo Lah Lah', cursive;
+    font-size: 80px; 
 }
-
-
-#perdedor { color: aqua; font-family:
-     'Rubik Vinyl', cursive;
-      font-size: 80px; }
-#vensedor { color: rgb(138, 44, 44);
-     font-family: 'Moo Lah Lah', cursive;
-      font-size: 80px; }

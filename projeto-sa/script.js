@@ -3,9 +3,11 @@ const VaBase = document.querySelector('.base');
 const umSegredo = document.getElementById('plavra-secreta');
 const imputShhh = document.getElementById('segredos');
 const APalavra = document.querySelector('.palavra-oculta');
+
 const Umpalavras = document.getElementById('Umpalavras');
 const input2 = document.getElementById('palavras');
 const chanses = document.getElementById('tentativas');
+
 const pontos = document.getElementById('pontos');
 const ErroLetras = document.getElementById('letras');
 
@@ -50,45 +52,45 @@ Umpalavras.addEventListener('submit', function (event) {
 
 
 
-    for (let contador = 0; contador < palavraSecreta.length; contador++) {
-        if (palavraSecreta[contador] === letra) {
-
-            spans[contador].textContent = letra.toUpperCase();
+    for (let contador2 = 0; contador2 < palavraSecreta.length; contador2++) {
+        if (palavraSecreta[contador2] === letra) {
+            spans[contador2].textContent = letra.toUpperCase();
             acertos = true;
         }
     }
     if (!acertos) {
         erros++;
-        total = menosUMponto - total;
+        total = total - menosUMponto;
+        
 
         if (!todasASletras.includes(letra)) {
             todasASletras.push(letra);
         }
     }
-
-    ErroLetras.textContent = todasASletras.join(", ").toUpperCase();
-    chanses.textContent = limite - erros;
-
-    if (erros >= limite) {
-        alert("A palavra era: " + palavraSecreta);
-        location.reload();
-        return;
-    }
     else {
         total = total + Doispontos;
     }
-
     if (total < 0) total = 0;
     pontos.textContent = total;
+    chanses.textContent = limite - erros;
+    ErroLetras.textContent = todasASletras.join(", ").toUpperCase();
+    
+    
 
+    if (erros >= limite) {
+        VaBase.style.display = 'none';
+        telaPerdeu.style.display = 'block';
+        setTimeout(() => location.reload(), 3000);
+        return;
+    }
 
-    const ganhou = Array.from(spans).some(virificar => virificar.textContent.includes("_"));
+    const aindaTemTraco = Array.from(spans).some(virificar => virificar.textContent.includes("_"));
 
-    if (!ganhou) {
-        setTimeout(() => {
-            alert("Parabéns! Você venceu!");
-            location.reload();
-        }, 100);
+    if (!aindaTemTraco) {
+        VaBase.style.display = 'none';
+        telaGanhou.style.display = 'block';
+        setTimeout(() => 
+        location.reload(), 4000);
     }
 });
 
