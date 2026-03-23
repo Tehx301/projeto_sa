@@ -3,13 +3,15 @@ const VaBase = document.querySelector('.base');
 const umSegredo = document.getElementById('plavra-secreta');
 const imputShhh = document.getElementById('segredos');
 const APalavra = document.querySelector('.palavra-oculta');
-
 const Umpalavras = document.getElementById('Umpalavras');
 const input2 = document.getElementById('palavras');
-const chanses = document.getElementById('tentativas');
 
+const chanses = document.getElementById('tentativas');
 const pontos = document.getElementById('pontos');
 const ErroLetras = document.getElementById('letras');
+
+const perdedor = document.getElementById('perdedor');
+const vensedor = document.getElementById('vensedor');
 
 let todasASletras = [];
 let total = 0;
@@ -45,7 +47,7 @@ Umpalavras.addEventListener('submit', function (event) {
     const letra = input2.value.toLowerCase();
     input2.value = ""
 
-    if (!letra) return;
+    if (!letra || letra.length > 1) return;
 
     const spans = APalavra.querySelectorAll('span');
     let acertos = false;
@@ -61,7 +63,7 @@ Umpalavras.addEventListener('submit', function (event) {
     if (!acertos) {
         erros++;
         total = total - menosUMponto;
-        
+
 
         if (!todasASletras.includes(letra)) {
             todasASletras.push(letra);
@@ -74,23 +76,23 @@ Umpalavras.addEventListener('submit', function (event) {
     pontos.textContent = total;
     chanses.textContent = limite - erros;
     ErroLetras.textContent = todasASletras.join(", ").toUpperCase();
-    
-    
+
+
 
     if (erros >= limite) {
         VaBase.style.display = 'none';
-        telaPerdeu.style.display = 'block';
-        setTimeout(() => location.reload(), 3000);
+        perdedor.style.display = 'block';
+        setTimeout(() => location.reload(),900000);
         return;
     }
 
-    const aindaTemTraco = Array.from(spans).some(virificar => virificar.textContent.includes("_"));
+    const aindaTemTraco = Array.from(spans).some(span => span.textContent.includes("_"));
 
     if (!aindaTemTraco) {
         VaBase.style.display = 'none';
-        telaGanhou.style.display = 'block';
-        setTimeout(() => 
-        location.reload(), 4000);
+        vensedor.style.display = 'block';
+        setTimeout(() =>
+            location.reload(),900000);
     }
 });
 

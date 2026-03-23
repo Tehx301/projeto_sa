@@ -135,16 +135,10 @@ input:focus{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: black;
-    color: aqua;
     padding: 20px;
     font-size: 2rem;
     border-radius: 10px;
     z-index: 1000;
-    font-size: 150px;
-    font-family:
-    'Rubik Vinyl', cursive;
-    font-size: 80px; 
 }
 
 .vensedor{
@@ -153,13 +147,43 @@ input:focus{
     top: 50%;
     left: 50%;
     transform:translate(-50%, -50%);
-    background:black;
-    color:rgb(138, 44, 44);
     padding: 20px;
     font-size: 2rem;
     border-radius: 10px;
     z-index: 1000;
+}
+
+.finalbom{
+    background: linear-gradient(to right,rgb(255, 0, 0),rgb(255, 136, 0),rgb(251, 255, 0),rgb(9, 255, 0),rgb(0, 255, 234),rgb(0, 47, 255),rgb(119, 0, 255),rgb(255, 0, 242),rgb(255, 0, 0));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: mover-gradiente 20s linear infinite;
     font-size: 100px;
-    font-family: 'Moo Lah Lah', cursive;
-    font-size: 80px; 
+    font-family: "Barrio", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+@keyframes mover-gradiente {
+    0% {background-position: 0% center;}
+    100% {background-position: 200% center; }
+  }
+.finalruim{
+    background-image: linear-gradient(to right, #ff0000,#3f2727e3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    font-size: 150px;
+   
+        font-family: "Rubik Glitch", system-ui;
+        font-weight: 400;
+        font-style: normal;
+}  
+      
+img.icone{
+    height: 80em;  
+    width: auto;      
+    vertical-align: middle;
 }
